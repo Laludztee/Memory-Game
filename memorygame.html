@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memory Game</title>
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+    <div class="container">
+	    <header>
+            <h1>Memory Game</h1>
+        </header>
+        <section class="scores">
+        	<ul class="rank">
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+        	</ul>
+        	<span class="moves"></span><i class="correct"></i>
+            <div class="timer">
+            </div>
+        </section>
+
+        <ul class="group" id="tile-group">
+            <li class="tile" type="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="tile" type="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="tile match"  type="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="tile" type="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="tile"  type ="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+            <li class="tile match" type="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="tile"  type="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="tile" type="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="tile" type="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="tile" type="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="tile" type="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="tile" type="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="tile open show" type="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="tile" type="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="tile" type="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="tile" type="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+        </ul>
+
+        <div id="congrats-alert" class="overlay">
+            <div class="alert">
+                <h2>Way to go!</h2>
+                <a class="close" href=# >x</a>
+                <div class="header">
+                    YOU WON!
+                </div>
+                <div class="content">
+                    <p>You made <span id=totalMoves> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                    <p>Rating:<span id=starRating></span></p>
+                </div>
+                <button id="play-again"onclick="playAgain()">
+                    Play again?
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>

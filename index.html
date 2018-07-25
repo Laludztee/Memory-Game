@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memory Game Homepage</title>
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+    <nav id="my-off-canvas" class="off-canvas nav-bar">
+        <img class="logo" src="./img/icon.jpg" alt="memory logo">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="#">App Info</a>
+        <a href="memorygame.html">Memory Game</a>
+    </nav>
+    <div id="hamburger">
+        <span class="hamburger-icon" title="Navigate to sidebar" onclick="openNav()"> &#9776; </span>
+    </div>
+	<div id="intro">
+        <header id="header-section">
+	        <h1> Welcome to My Memory Game! </h1>
+            <img class="image" src="./img/welcome.jpg" alt="Memory Game">
+        </header>
+		<p> This is a game where you need to match pairs of tiles. Playing is very simple - you turn over one tile and then try to find a matching tile. When you click on the first tile of a turn and you have exposed a matching tile in a previous turn, a message tells you that the pair is known. This indicates that you should then be able to make a match (if you have perfect recall). The scoring system incorporates this principle. 
+        </p>
+        <div id="scoreboard">
+            <h3> Scoring </h3>
+            <ul>
+                <li> The timer starts when you open a pair of cards (matched or unmatched). </li>
+                <li> Each time you make a successful match you score points. </li>
+                <li>If you fail to match when you should have been able to (a matching tile was previously shown), you score (-2 * number of times match tile has been shown). So if a matching tile has been revealed three times before, you will score -6. </li>
+                <li> If you have perfect recall, you score a bonus point.</li>
+        </div>
+	</div>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
