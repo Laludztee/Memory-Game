@@ -18,9 +18,10 @@ body {
 }
 
 body {
-    font-family: "Tahoma", "Trebuchet MS", "Lucida Sans Unicode";
+    font-family: "Coda", "Tahoma", "Trebuchet MS";
     font-size: 18px;
-    background-color: #e1ef2d;
+    background: url(../img/geometry2.png);
+    overflow-y: hidden;
 }
 
 .logo {
@@ -48,7 +49,7 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition: margin-left .5s;
+    flex-wrap: wrap;
 }
 
 /*
@@ -91,6 +92,7 @@ h3 {
 	text-align: center;
 }
 
+
 /*
 *
 * Nav bar and homepage on phones
@@ -98,15 +100,39 @@ h3 {
 */
 
 @media screen and (max-width: 605px) {
+	#hamburger, .logo {
+		display: none;
+	}
+	
+	.off-canvas .closebtn {
+		display: none;
+	}
+
 	.nav-bar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
 		justify-content: center;
 		align-items: center;
 		max-width: 100% !important;
+		height: 10%;
+		background: #a77f4b;
+		border-radius: 8%;
+		margin-top: 5%;
 	}
 
 	.nav-bar a {
 		padding: 3px 3px 5px 5px !important;
+		text-decoration: none;
 		margin: 1% !important;
+		font-size: 1em;
+    	color: black;
+    	display: block;
+    	transition: 0.3s;
+	}
+
+	.nav-bar a:hover {
+    color: #f1f1f1;
 	}
 
 	#intro {
@@ -116,6 +142,26 @@ h3 {
 	#scoreboard {
 	max-width: 100% !important;
 	}
+
+	.group {
+    	width: 90vw !important;
+    	height: 50vh !important;
+        background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
+    	padding: 4%;
+	}
+
+	.group .tile {
+    height: 25% !important;
+    width: 25% !important;
+    background: #330505;
+    font-size: 0;
+    color: #ffffff;
+    margin-bottom: 1% !important;
+	}
+
+	.scores {
+		width: 40% !important;
+	}
 }
 
 /*
@@ -124,7 +170,7 @@ h3 {
 *
 */
 
-@media screen and (max-width: 1229px) {
+@media screen and (min-width: 606px) and (max-width: 1229px) {
 	#hamburger, .logo {
 		display: none;
 	}
@@ -158,11 +204,31 @@ h3 {
 	.nav-bar a:hover {
     color: #f1f1f1;
 	}
+
+	.group {
+    width: 85vw !important;
+    height: 70vh !important;
+    background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
+    padding: 4%;
+	}
+
+	.group .tile {
+    height: 25% !important;
+    width: 25% !important;
+    margin-bottom: 1%;
+    background: #330505;
+    font-size: 0;
+    color: #ffffff;
+	}
+
+	.scores {
+		width: 70% !important;
+	}
 }
 
 /*
 *
-* Off-canvas on laptops
+* Off-canvas on larger screens
 *
 */
 
@@ -176,7 +242,7 @@ h3 {
 	cursor: pointer;
 	background: linear-gradient(80deg, #a77f4b 40%, #d0ea2b 60%);
 	border-radius: 15%;
-	margin-left: 70%;
+	margin-left: 10%;
 	}
 
 	.off-canvas {
@@ -213,6 +279,13 @@ h3 {
     font-size: 30px;
     margin-left: 50px;
 	}
+
+	.group {
+    width: 70vw !important; 
+    height: calc(100vh - 80px) !important;
+    background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
+    padding: 4%;
+	}
 }
 
 /*
@@ -223,8 +296,8 @@ h3 {
 
 .scores {
     text-align: left;
-    /*width: 345px;*/
-    margin-bottom: 10px;
+    max-width: 35%;
+    margin-bottom: 5px;
 }
 
 .scores .rank {
@@ -260,11 +333,11 @@ h3 {
 */
 
 .group {
-    max-width: 650px;
-    min-height: 630px;
+    max-width: 500px;
+    max-height: 530px;
     background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
     padding: 32px;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
@@ -274,12 +347,12 @@ h3 {
 }
 
 .group .tile {
-    height: 125px;
-    width: 125px;
+    height: 95px;
+    width: 95px;
     background: #330505;
     font-size: 0;
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -299,13 +372,13 @@ h3 {
 }
 
 .group .tile.show {
-    font-size: 33px;
+    font-size: 30px;
 }
 
 .group .tile.match {
     cursor: default;
     background: #d0ea2b;
-    font-size: 33px;
+    font-size: 30px;
 
     animation-name: match;
 	-webkit-backface-visibility: visible !important;
@@ -483,44 +556,5 @@ h3 {
 
 	to {
 		transform: scale3d(1, 1, 1);
-	}
-}
-
-/*
-*
-* Media queries
-*
-*/
-
-/* For phones */
-@media (max-width: 320px) {
-	.group {
-		width: 85%;
-	}
-
-	.group .tile {
-		height: 4.7rem;
-		width: 4.7rem;
-	}
-}
-
-/* For tablets and laptops */
-@media (min-width: 768px) {
-	.container {
-		font-size: 22px;
-	}
-
-	.group {
-		width: 650px;
-		height: 630px;
-	}
-
-	.group .tile {
-		height: 125px;
-		width: 125px;
-	}
-
-	.alert {
-		width: 60%;
 	}
 }

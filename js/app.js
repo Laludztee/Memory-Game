@@ -37,7 +37,6 @@ function openNav() {
     document.getElementById("my-off-canvas").style.width = "300px";
     document.getElementById("intro").style.marginLeft = "320px";
     document.getElementById("hamburger").style.cssText = "display: none";
-    document.body.style.cssText = "background-color: transparent; opacity= 0.9";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -45,7 +44,6 @@ function closeNav() {
     document.getElementById("my-off-canvas").style.width = "0";
     document.getElementById("intro").style.marginLeft = "12.5%";
     document.getElementById("hamburger").style.cssText = "margin-left: 22%; display: visible";
-    document.body.style.backgroundColor = "#e1ef2d";
 }
 
 /*
@@ -69,8 +67,8 @@ function shuffle(array) {
     return array;
 }
 
-document.body.onload = letsPlay();
-function letsPlay(){
+document.body.onload = play();
+function play(){
     tiles = shuffle(tiles);
     for (let i = 0; i< tiles.length; i++) {
       group.innerHTML = "";
@@ -243,7 +241,7 @@ function congratulations(){
 function closeModal(){
     closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
-        letsPlay();
+        play();
     });
 }
 
@@ -251,7 +249,7 @@ function closeModal(){
 // @desciption for user to play Again 
 function playAgain(){
     modal.classList.remove("show");
-    letsPlay();
+    play();
 }
 
 
