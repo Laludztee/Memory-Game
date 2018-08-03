@@ -1,17 +1,22 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Memory Game</title>
+	<link rel="icon" href="./img/icon.png">
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="./css/app.css">
 </head>
 <body>
+    <nav id="my-nav-bar" class="nav-bar">
+        <a href="index.html">Home</a>
+        <a href="#">App Info</a>
+        <a href="memorygame.html">Memory Game</a>
+    </nav>
     <div class="container">
 	    <header>
             <h1>Memory Game</h1>
@@ -24,14 +29,13 @@
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
         	</ul>
-        	<span class="moves"></span><i class="correct"></i>
-            <div class="timer">
-            </div>
-            <div class="restart">
-                <i class="fa fa-repeat" onclick="play()"></i>
-            </div>
+			<div>
+				<span class="moves"></span><i class="correct"></i>
+				<div class="timer">
+				</div>
+			</div>
         </section>
-
+		<button class="resetbtn" title="Start over?" onclick="play()"> Reset </button>
         <ul class="group" id="tile-group">
             <li class="tile" type="diamond">
                 <i class="fa fa-diamond"></i>
@@ -39,7 +43,7 @@
             <li class="tile" type="plane">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="tile match"  type="anchor">
+            <li class="tile"  type="anchor">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="tile" type="bolt">
@@ -48,7 +52,7 @@
             <li class="tile"  type ="cube">
                 <i class="fa fa-cube"></i>
             </li>
-            <li class="tile match" type="anchor">
+            <li class="tile" type="anchor">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="tile"  type="leaf">
@@ -69,7 +73,7 @@
             <li class="tile" type="bomb">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="tile open show" type="bolt">
+            <li class="tile" type="bolt">
                 <i class="fa fa-bolt"></i>
             </li>
             <li class="tile" type="bicycle">
@@ -88,12 +92,12 @@
                 <h2>Way to go!</h2>
                 <a class="close" href=# >x</a>
                 <div class="header">
-                    YOU WON!
+                    YOU WON! 🎉🎉🎉
                 </div>
                 <div class="content">
                     <p>You made <span id=totalMoves> </span> moves </p>
                     <p>in <span id=totalTime> </span> </p>
-                    <p>Rating:<span id=starRating></span></p>
+                    <p> Your rating:<span id=starRating></span></p>
                 </div>
                 <button id="play-again"onclick="playAgain()">
                     Play again?
@@ -101,7 +105,6 @@
             </div>
         </div>
     </div>
-
     <script src="./js/app.js"></script>
 </body>
 </html>

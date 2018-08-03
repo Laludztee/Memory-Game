@@ -21,16 +21,7 @@ body {
     font-family: "Coda", "Tahoma", "Trebuchet MS";
     font-size: 18px;
     background: url(../img/geometry2.png);
-    overflow-y: hidden;
-}
-
-.logo {
-	display: block;
-	position: relative;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 30%;
+    overflow-x: hidden;
 }
 
 /*
@@ -52,278 +43,18 @@ h1 {
     flex-wrap: wrap;
 }
 
-/*
-*
-* Homepage
-*
-*/
-
-#header-section {
-	text-align: center;
-	display: flex;
-	display: inline-block;
-	flex-direction: column;
-	justify-content: center;
-	flex-wrap: wrap;
+.resetbtn {
+	font-size: 1.2em;
+  	border-radius: 10px;
+  	background: rgb(120, 25, 57);
+  	box-shadow: 2px 2px 5px 2px rgb(3, 10, 5);
+  	color: gold;
+	margin: 2%;
 }
 
-.image {
-	height: 12em;
-	width: 100%;
-}
-
-#intro {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	width: 75%;
-	margin: auto;
-	font-size: 1.1em;
-}
-
-#scoreboard {
-	max-width: 85%;
-	border: 3px solid #a77f4b;
-	border-radius: 5%;
-	margin: 3%;
-}
-
-h3 {
-	text-align: center;
-}
-
-
-/*
-*
-* Nav bar and homepage on phones
-*
-*/
-
-@media screen and (max-width: 605px) {
-	#hamburger, .logo {
-		display: none;
-	}
-	
-	.off-canvas .closebtn {
-		display: none;
-	}
-
-	.nav-bar {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		align-items: center;
-		max-width: 100% !important;
-		height: 10%;
-		background: #a77f4b;
-		border-radius: 8%;
-		margin-top: 5%;
-	}
-
-	.nav-bar a {
-		padding: 3px 3px 5px 5px !important;
-		text-decoration: none;
-		margin: 1% !important;
-		font-size: 1em;
-    	color: black;
-    	display: block;
-    	transition: 0.3s;
-	}
-
-	.nav-bar a:hover {
-    color: #f1f1f1;
-	}
-
-	#intro {
-		font-size: 0.9em;
-	}
-
-	#scoreboard {
-	max-width: 100% !important;
-	}
-
-	.group {
-    	width: 90vw !important;
-    	height: 50vh !important;
-        background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
-    	padding: 4%;
-	}
-
-	.group .tile {
-    height: 25% !important;
-    width: 25% !important;
-    background: #330505;
-    font-size: 0;
-    color: #ffffff;
-    margin-bottom: 1% !important;
-	}
-
-	.scores {
-		width: 40% !important;
-	}
-}
-
-/*
-*
-* Nav bar on tablets
-*
-*/
-
-@media screen and (min-width: 606px) and (max-width: 1229px) {
-	#hamburger, .logo {
-		display: none;
-	}
-	
-	.off-canvas .closebtn {
-		display: none;
-	}
-	
-	.nav-bar {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-		max-width: 100%;
-		height: 10%;
-		background: #a77f4b;
-		border-radius: 8%;
-		margin-top: 5%;
-	}
-
-	.nav-bar a {
-		padding: 8px 8px 12px 32px;
-    	text-decoration: none;
-    	font-size: 1em;
-    	color: black;
-    	display: block;
-    	transition: 0.3s;
-    	margin: 4%;
-	}
-
-	.nav-bar a:hover {
-    color: #f1f1f1;
-	}
-
-	.group {
-    width: 85vw !important;
-    height: 70vh !important;
-    background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
-    padding: 4%;
-	}
-
-	.group .tile {
-    height: 25% !important;
-    width: 25% !important;
-    margin-bottom: 1%;
-    background: #330505;
-    font-size: 0;
-    color: #ffffff;
-	}
-
-	.scores {
-		width: 70% !important;
-	}
-}
-
-/*
-*
-* Off-canvas on larger screens
-*
-*/
-
-@media screen and (min-width: 1230px) {
-	#hamburger {
-	margin-left: 22%;
-	}
-
-	.hamburger-icon {
-	font-size: 40px;
+.resetbtn:hover {
 	cursor: pointer;
-	background: linear-gradient(80deg, #a77f4b 40%, #d0ea2b 60%);
-	border-radius: 15%;
-	margin-left: 10%;
-	}
-
-	.off-canvas {
-	width: 0;
-	height: 100%;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-    left: 0;
-	transition: transform 0.5s ease-in;
-	padding-top: 60px;
-	overflow-x: hidden;
-	background: #a77f4b;
-	border: 1px solid #d0ea2b;
-	}
-
-	.off-canvas a {
-    padding: 8px 8px 15px 32px;
-    text-decoration: none;
-    font-size: 1.5em;
-    color: black;
-    display: block;
-    transition: 0.3s;
-	}
-
-	.off-canvas a:hover {
-    color: #f1f1f1;
-	}
-
-	.off-canvas .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 30px;
-    margin-left: 50px;
-	}
-
-	.group {
-    width: 70vw !important; 
-    height: calc(100vh - 80px) !important;
-    background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
-    padding: 4%;
-	}
-}
-
-/*
-*
-* Score Panel
-*
-*/
-
-.scores {
-    text-align: left;
-    max-width: 35%;
-    margin-bottom: 5px;
-}
-
-.scores .rank {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
-}
-
-.scores .rank li {
-    list-style: none;
-    display: inline-block;
-}
-
-.scores .restart {
-    float: right;
-    cursor: pointer;
-}
-
-.fa-star {
-    color: gold;
-}
-
-.timer {
-    display: inline-block;
-    margin: 1px 1px;
+	color: white;
 }
 
 /*
@@ -331,11 +62,10 @@ h3 {
 * Tiles
 *
 */
-
 .group {
     max-width: 500px;
     max-height: 530px;
-    background: linear-gradient(135deg, #a77f4b 40%, #d0ea2b 60%);
+    background: linear-gradient(45deg, gold, #48daff);
     padding: 32px;
     border-radius: 5px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -377,8 +107,8 @@ h3 {
 
 .group .tile.match {
     cursor: default;
-    background: #d0ea2b;
-    font-size: 30px;
+    background: #48daff;
+    font-size: 32px;
 
     animation-name: match;
 	-webkit-backface-visibility: visible !important;
@@ -424,20 +154,19 @@ h3 {
   
 .alert {
 	margin: 70px auto;
-	padding: 20px;
-	background: #a77f4b;
-	opacity: 0.8;
+	padding: 15px;
+	background: url(../img/geometry2.png);
+	opacity: 0.6;
 	border-radius: 10px;
 	width: 70%;
 	position: relative;
 	transition: all 5s ease-in-out;
-	font-family: "Tahoma";
 }
   
 .alert h2 {
 	margin-top: 0;
-	color: #d4fa2b;
-	font-family: Tahoma, Arial, sans-serif;
+	color: black;
+	font-family: Tahoma, Arial;
 }
 
 .alert .close {
@@ -448,11 +177,11 @@ h3 {
 	font-size: 30px;
 	font-weight: bold;
 	text-decoration: none;
-	color: #333;
+	color: gold;
 }
 
 .alert .close:hover {
-	color: #E5F720;
+	color: #e5f720;
 }
 
 .alert .header,
@@ -472,15 +201,133 @@ h3 {
 }
 
 #play-again {
-	background-color: green;
+	background-color: #48daff;
 	padding: 0.7rem 1rem;
 	font-size: 1.1rem;
 	display: block;
 	margin: 0 auto;
 	width: 50%;
 	font-family: "Trebuchet MS";
-	color: #ffffff;
+	color: black;
 	border-radius: 5px;
+}
+
+/*
+*
+* Homepage
+*
+*/
+
+#header-section {
+	text-align: center;
+	display: flex;
+	display: inline-block;
+	flex-direction: column;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.image {
+	height: 12em;
+	width: 100%;
+}
+
+#intro {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 75%;
+	margin: auto;
+	font-size: 1.1em;
+}
+
+#scoreboard {
+	max-width: 85%;
+	border: 3px solid #48daff;
+	border-radius: 15px;
+	margin: 3%;
+}
+
+h3 {
+	text-align: center;
+}
+
+p {
+	padding-left: 5%;
+}
+
+/*
+*
+* Nav bar
+*
+*/
+
+.nav-bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	align-items: center;
+	max-width: 100% !important;
+	height: 10%;
+	background: #48daff;
+	border-radius: 10px;
+	margin-top: 5%;
+}
+
+.nav-bar a {
+	padding: 3px 3px 5px 5px !important;
+	text-decoration: none;
+	margin: 1% !important;
+	font-size: 1.1em;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-bar a:hover {
+    color: black;
+	border: 1px solid #f1f1f1;
+	background-color: #f1f1f1;
+	border-radius: 5px;
+}
+
+/*
+*
+* Score Panel
+*
+*/
+
+.scores {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+    text-align: left;
+    max-width: 35%;
+    margin-bottom: 5px;
+}
+
+.scores .rank {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.scores .rank li {
+    list-style: none;
+    display: inline-block;
+}
+
+.scores .restart {
+    float: right;
+    cursor: pointer;
+}
+
+.timer {
+    display: inline-block;
+    margin: 1px 1px;
 }
 
 /*
@@ -491,7 +338,7 @@ h3 {
 
 @keyframes flipIn {
 	from {
-		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+	transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
 		animation-timing-function: ease-in;
 		opacity: 0;
 	}
@@ -556,5 +403,79 @@ h3 {
 
 	to {
 		transform: scale3d(1, 1, 1);
+	}
+}
+
+/*
+*
+* Media Queries
+*
+*/
+
+@media screen and (max-width: 515px) {
+	#intro {
+		font-size: 0.9em;
+	}
+
+	#scoreboard {
+	max-width: 100% !important;
+	}
+	
+	.tile {
+		width: 17vw !important;
+		height: 17vw!important;
+	}
+	.group {
+    	width: 80vw !important;
+    	height: 65vh !important;
+    	padding: 4%;
+	}
+
+	.group .tile {
+    background: #330505;
+    font-size: 0;
+    color: #ffffff;
+	}
+
+	.scores {
+		width: 40% !important;
+	}
+}
+
+@media screen and (min-width: 516px) and (max-width: 760px) {
+	.tile {
+		width: 13vw !important;
+		height: 13vw!important;
+	}
+	.group {
+    width: 70vw !important;
+    height: 75vh !important;
+    padding: 4%;
+	}
+
+	.group .tile {
+    margin-bottom: 1%;
+    background: #330505;
+    font-size: 0;
+    color: #ffffff;
+	}
+
+	.scores {
+		width: 70% !important;
+	}
+
+	.nav-bar a {
+	margin: 6% !important;
+	}
+}
+
+@media screen and (min-width: 761px) {
+	.group {
+    width: 70vw !important; 
+    height: calc(100vh - 80px) !important;
+    padding: 4%;
+	}
+	.nav-bar a {
+	margin: 8% !important;
 	}
 }

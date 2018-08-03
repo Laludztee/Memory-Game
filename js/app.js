@@ -1,53 +1,18 @@
 
-let mod = document.querySelector("mo");
-/*
- * Create a list that holds all of your tiles
- */
-// tiles array holds all tiles
 let tile = document.getElementsByClassName("tile");
 let tiles = [...tile];
-
-// group of all tiles in game
 const group = document.getElementById("tile-group");
-
-// declaring move variable
 let moves = 0;
 let counter = document.querySelector(".moves");
-
-// declare variables for star icons
 const stars = document.querySelectorAll(".fa-star");
-
-// declaring variable of matchedTiles
 let matchedTile = document.getElementsByClassName("match");
-
- // stars list
- let starsList = document.querySelectorAll(".stars li");
-
- // close icon in modal
- let closeicon = document.querySelector(".close");
-
- // declare modal
- let modal = document.getElementById("congrats-alert")
-
- // array for opened tiles
- let openedTiles = [];
-
-
-function openNav() {
-    document.getElementById("my-off-canvas").style.width = "300px";
-    document.getElementById("intro").style.marginLeft = "320px";
-    document.getElementById("hamburger").style.cssText = "display: none";
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-    document.getElementById("my-off-canvas").style.width = "0";
-    document.getElementById("intro").style.marginLeft = "12.5%";
-    document.getElementById("hamburger").style.cssText = "margin-left: 22%; display: visible";
-}
+let starsList = document.querySelectorAll(".stars li");
+let closeicon = document.querySelector(".close");
+let modal = document.getElementById("congrats-alert");
+let openedTiles = [];
 
 /*
- * Display the tiless on the page
+ * Display the tiles on the page
  *   - shuffle the list of tiles using the provided "shuffle" method below
  *   - loop through each tile and create its HTML
  *   - add each tile's HTML to the page
@@ -80,7 +45,7 @@ function play(){
     openedTiles.length = 0;
 }
     moves = 0;
-    counter.innerHTML = `${moves} move`;
+    counter.innerHTML = `${moves} moves`;
 
     for (let i=0; i<stars.length; i++){
         stars[i].style.color = "#330505";
@@ -134,7 +99,7 @@ function unmatched(){
         openedTiles[1].classList.remove("show", "open", "no-event","unmatched");
         enable();
         openedTiles = [];
-    },1000);
+    },900);
 }
 
 function tileOpen(){
@@ -214,7 +179,7 @@ function startTimer(){
 }
 
 
-// @description congratulations when all tiles match, show modal and moves, time and rating
+// @description congratulations when all tiles match
 function congratulations(){
     if (matchedTile.length == 16){
         clearInterval(interval);
@@ -231,7 +196,6 @@ function congratulations(){
         document.getElementById("starRating").innerHTML = starRating;
         document.getElementById("totalTime").innerHTML = finalTime;
 
-        //closeicon on modal
         closeModal();
     };
 }
@@ -246,14 +210,14 @@ function closeModal(){
 }
 
 
-// @desciption for user to play Again 
+// @desciption play game again 
 function playAgain(){
     modal.classList.remove("show");
     play();
 }
 
 
-// loop to add event listeners to each tile
+// add event listeners to each tile
 for (let i = 0; i < tiles.length; i++){
     tile = tiles[i];
     tile.addEventListener("click", displayTile);
