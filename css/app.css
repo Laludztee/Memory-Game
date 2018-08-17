@@ -412,7 +412,7 @@ p {
 *
 */
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 469px) {
 	#intro {
 		font-size: 0.9em;
 	}
@@ -442,7 +442,7 @@ p {
 	}
 }
 
-@media screen and (min-width: 516px) and (max-width: 760px) {
+@media screen and (min-width: 470px) and (max-width: 676px) {
 	.tile {
 		width: 13vw !important;
 		height: 13vw!important;
@@ -469,7 +469,7 @@ p {
 	}
 }
 
-@media screen and (min-width: 761px) {
+@media screen and (min-width: 677px) {
 	.group {
     width: 70vw !important; 
     height: calc(100vh - 80px) !important;
