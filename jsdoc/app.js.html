@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ *  @description Variables declaration
+*/
+let tile = document.getElementsByClassName("tile");
+let tiles = [...tile];
+const group = document.getElementById("tile-group");
+let moves = 0;
+let counter = document.querySelector(".moves");
+const stars = document.querySelectorAll(".fa-star");
+let matchedTile = document.getElementsByClassName("match");
+let starsList = document.querySelectorAll(".stars li");
+let closeicon = document.querySelector(".close");
+let modal = document.getElementById("congrats-alert");
+let openedTiles = [];
+
+/*
+ * Display the tiles on the page
+ *   - shuffle the list of tiles using the provided "shuffle" method below
+ *   - loop through each tile and create its HTML
+ *   - add each tile's HTML to the page
+ */
+
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
+
+/**
+ *  @description State of the tiles before the game begins
+*/
+document.body.onload = play();
+function play(){
+    tiles = shuffle(tiles);
+    for (let i = 0; i&lt; tiles.length; i++) {
+      group.innerHTML = "";
+       [].forEach.call(tiles, function (item) {
+           group.appendChild(item);
+       });
+    tiles[i].classList.remove("show", "open", "match", "disabled");
+/*to empty the array*/    
+    openedTiles.length = 0;
+}
+    moves = 0;
+    counter.innerHTML = `${moves} moves`;
+/*styling the stars*/
+    for (let i=0; i&lt;stars.length; i++){
+        stars[i].style.color = "#330505";
+        stars[i].style.visibility = "visible";
+    }
+/*timer before the game begins*/
+    second = 0;
+    minute = 0;
+    hour = 0;
+    let timer = document.querySelector(".timer");
+    timer.innerHTML = "0 mins 0 secs";
+    clearInterval(interval);
+}
+
+/**
+ * @function
+ * @description toggles the classes when the tile is open
+ */
+let displayTile = function (){
+    this.classList.toggle("open");
+    this.classList.toggle("show");
+    this.classList.toggle("disabled");
+};
+
+/**
+ * @function disable
+ * @description adds the disabled class
+ */
+function disable(){
+    Array.prototype.filter.call(tiles, function(tile){
+        tile.classList.add('disabled');
+    });
+}
+
+/**
+ * @function enable
+ * @description removes the disabled class
+ */
+function enable(){
+    Array.prototype.filter.call(tiles, function(tile){
+        tile.classList.remove('disabled');
+        for(let i = 0; i &lt; matchedTile.length; i++){
+            matchedTile[i].classList.add("disabled");
+        }
+    });
+}
+
+/**
+ * @function matched 
+ * @description evaluates when tiles match
+ */
+function matched(){
+    openedTiles[0].classList.add("match", "disabled");
+    openedTiles[1].classList.add("match", "disabled");
+    openedTiles[0].classList.remove("show", "open", "no-event");
+    openedTiles[1].classList.remove("show", "open", "no-event");
+    openedTiles = [];
+}
+
+/**
+ * @function unmatched
+ * @description evaluates when tiles don't match
+ */
+function unmatched(){
+    openedTiles[0].classList.add("unmatched");
+    openedTiles[1].classList.add("unmatched");
+    disable();
+    setTimeout(function(){
+        openedTiles[0].classList.remove("show", "open", "no-event","unmatched");
+        openedTiles[1].classList.remove("show", "open", "no-event","unmatched");
+        enable();
+        openedTiles = [];
+    },900);
+}
+
+/**
+ * @function tileOpen
+ * @description when the tiles are open and they match/don't match
+ * @description the moveCounter starts when a pair of tiles are open
+ */
+function tileOpen(){
+    openedTiles.push(this);
+        if(openedTiles[0].type === openedTiles[1].type){
+            matched();
+        } 
+        else {
+            unmatched();
+        }
+    moveCounter();
+}
+
+/**
+ * @function moveCounter
+ * @description the timer starts counting when a pair of tile is open
+ * @description the range of moves that affect on the star rating
+ */
+function moveCounter(){
+    moves++;
+    counter.innerHTML = `${moves} move`;
+    /*start timer on first click*/
+    if(moves == 1){
+        second = 0;
+        minute = 0; 
+        hour = 0;
+        startTimer();
+    }
+    if (moves > 1){
+        counter.innerHTML = `${moves} moves`;
+    }
+    /*the range of moves determines the star rating*/
+    if (moves > 10 &amp;&amp; moves &lt; 15){
+        for(let i= 0; i &lt; 3; i++){
+            if(i &lt; 1) {
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+    else if (moves >= 15 &amp;&amp; moves &lt; 20){
+        for(let i= 0; i &lt; 3; i++){
+            if(i == 1){
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+    else if (moves >= 20 &amp;&amp; moves &lt; 25){
+        for(let i= 0; i &lt; 3; i++){
+            if(i > 1){
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+    else if (moves >= 25){
+        for(let i= 0; i &lt; 4; i++){
+            if(i > 1){
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+}
+
+/**
+ * @function startTimer
+ * @description the interval set for the game timing
+ */
+var second = 0, minute = 0; hour = 0;
+var timer = document.querySelector(".timer");
+var interval;
+function startTimer(){
+    interval = setInterval(function(){
+        timer.innerHTML = `${minute} mins ${second} secs `;
+        second++;
+        if(second == 60){
+            minute++;
+            second=0;
+        }
+        if(minute == 60){
+            hour++;
+            minute = 0;
+        }
+    },1000);
+}
+
+
+/**
+* @description congratulations when all tiles match
+*/
+function congratulations(){
+    if (matchedTile.length == 16){
+        clearInterval(interval);
+        finalTime = timer.innerHTML;
+
+        // show congratulations modal
+        modal.classList.add("show");
+
+        // declare star rating variable
+        var starRating = document.querySelector(".rank").innerHTML;
+
+        //showing move, rating, time on modal
+        document.getElementById("totalMoves").innerHTML = moves;
+        document.getElementById("starRating").innerHTML = starRating;
+        document.getElementById("totalTime").innerHTML = finalTime;
+
+        closeModal();
+    };
+}
+
+
+/**
+* @description close icon on modal
+*/
+function closeModal(){
+    closeicon.addEventListener("click", function(e){
+        modal.classList.remove("show");
+        play();
+    });
+}
+
+
+/**
+* @desciption play game again
+*/ 
+function playAgain(){
+    modal.classList.remove("show");
+    play();
+}
+
+
+/*add event listeners to each tile*/
+for (let i = 0; i &lt; tiles.length; i++){
+    tile = tiles[i];
+    tile.addEventListener("click", displayTile);
+    tile.addEventListener("click", tileOpen);
+    tile.addEventListener("click", congratulations);
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#closeModal">closeModal</a></li><li><a href="global.html#congratulations">congratulations</a></li><li><a href="global.html#disable">disable</a></li><li><a href="global.html#displayTile">displayTile</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#matched">matched</a></li><li><a href="global.html#moveCounter">moveCounter</a></li><li><a href="global.html#playAgain">playAgain</a></li><li><a href="global.html#startTimer">startTimer</a></li><li><a href="global.html#tile">tile</a></li><li><a href="global.html#tileOpen">tileOpen</a></li><li><a href="global.html#unmatched">unmatched</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Aug 17 2018 22:45:58 GMT+0100 (W. Central Africa Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
