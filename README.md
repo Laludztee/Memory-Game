@@ -12,7 +12,7 @@
 ## Instructions
 Hello there! I'm psyched to introduce you to this amazing app of mine!! :satisfied: In this game, you click on a tile to reveal its content and then try to find the matching tile (another tile that has the same content). When you find the matching tile, you will know :smile: It's pretty straightforward. It's a game of concentration, the quicker you find a matching tile, (in the barest minimum number of moves) the higher your star rating (the rating begins with 5 stars).
 
-**Play away and enjoy!! :smiley:**
+**Play away and enjoy!! :smiley: :smile:**
 
 ## Implementation
 The starter file for this app was provided by Udacity contatining HTML, CSS and a dummy JavaScript file. I built on it, customized it to be this app that you're viewing now. Interesting, right? :wink:
