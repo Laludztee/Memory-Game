@@ -272,7 +272,7 @@ p {
 	height: 10%;
 	background: #48daff;
 	border-radius: 10px;
-	margin-top: 5%;
+	margin: 0;
 }
 
 .nav-bar a {
