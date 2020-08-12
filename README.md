@@ -24,7 +24,7 @@ This app is responsive on all viewports ranging from small screens, (phones) med
 The game largely depends on [Font Awesome Icons](https://fontawesome.com/icons?d=gallery) because without these icons, you cannot view the content in each tile. Special appreciation to Font Awesome Library.
 
 ## Demo
-To view this app live and play the game, [Click here](https://oluwatomisinlalude.github.io/Memory-Game/)
+To view this app live and play the game, [Click here](https://tomisinlalude.github.io/Memory-Game/)
 
 ## References
 The following helped me a lot in the course of this project:
